@@ -1,0 +1,8 @@
+<div class="bg-[#F1F1F1] rounded-xl">
+    <h3 class="font-gratelos text-5xl px-3 py-1">{{ title }}</h3>
+    <div class="relative">
+        <img [src]="url" class="w-full rounded-xl" />
+        <button [routerLink]="['/products']" [queryParams]="{ categoria: categoria }" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 font-roboto bg-[#FFFFFF] text-[#131313] px-6 py-4 rounded-lg hover:bg-[#131313] hover:text-[#FFFFFF]">Ver Productos</button>
+    </div>
+</div>
+

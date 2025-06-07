@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+
+@for (category of categories; track $index) {
+    <app-categories-section [title]="category.title" [description]="category.description" [imageUrl]="category.imageUrl" ></app-categories-section>
+}
+
+<app-footer></app-footer>

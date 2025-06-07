@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+
+<div class="flex justify-center items-center gap-4 mt-4">
+    <div class="text-[#131313]">
+        <h1 class="text-[180px] font-gratelos text-left">URBAN🏙️<span class="block mt-[-100px]">ESSENTIALS</span></h1>
+        <p class="font-roboto max-w-xl text-xl mb-5 mt-[-30px]">Explora nuestra exclusiva selección de prendas urbanas, accesorios brillantes que realzan tu personalidad, y gadgets de última generación que harán tu vida más fácil y conectada.</p>
+        <button class="bg-[#131313] text-[#FFFFFF] text-xl font-roboto px-8 py-2 rounded-lg border-4 border-transparent hover:bg-[#FFFFFF] hover:border-[#131313] hover:text-[#131313]"><a routerLink="/products">Ver Productos</a></button>
+    </div>
+    <img src="https://i.postimg.cc/QCL2jzZ3/home.png" class="w-[480px] h-auto rounded-b-[100px] rounded-t-[100px] bg-[#F1F1F1]">
+</div>
+
+<app-brand></app-brand>
+
+<div class="flex gap-4 mt-5 p-5">
+    @for (category of categories; track $index) {
+        <app-categories [title]="category.title" [url]="category.url" [categoria]="category.categoria"></app-categories>
+    }
+</div>
+
+<app-footer></app-footer>

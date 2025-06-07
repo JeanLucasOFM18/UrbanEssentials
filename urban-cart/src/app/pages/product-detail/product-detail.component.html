@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+@if (loading) {
+  <div class="flex justify-center items-center h-screen">
+    <p class="text-2xl font-semibold">Cargando producto...</p>
+  </div>
+}
+@else if (product) {
+    <div class="flex justify-center items-center gap-5 m-10">
+        <img [src]="product.image" [alt]="product.title" class="rounded-xl w-auto max-w-4xl h-[550px] object-contain"/>
+        <div class="font-roboto text-[#131313]">
+            <p>{{ product.category.toUpperCase() }}</p>
+            <h2 class="font-gratelos text-5xl mb-2 max-w-3xl">{{ product.title.toUpperCase() }}</h2>
+            <p class="text-4xl mb-3">${{ product.price }}</p>
+            @if (product.category === "men's clothing" || product.category === "women's clothing") {
+                <p class="mb-2">Seleccionar Talla</p>
+                <div class="mb-2">
+                    @for (size of sizes; track $index) {
+                        <button
+                        (click)="selectedSize = size"
+                        class="mr-4 px-5 py-2 rounded-xl transition-colors"
+                        [class.bg-gray-800]="selectedSize === size"
+                        [class.text-white]="selectedSize === size"
+                        [class.bg-[#F1F1F1]]="selectedSize !== size"
+                        [class.text-black]="selectedSize !== size"
+                        >
+                            {{ size }}
+                        </button>
+                    }
+                </div>
+            }
+            <button class="bg-[#F1F1F1] mr-2 px-28 py-2 rounded-xl hover:bg-gray-600 hover:text-[#FFFFFF] mb-2" (click)="addToCart(product)">Añadir al carrito</button>
+            <p class="font-gratelos text-2xl">DESCRIPCIÓN</p>
+            <p class="max-w-3xl mb-2">{{ product.description }}</p>
+            <div class="flex gap-10">
+                <div class="flex flex-col">
+                    <p class="font-gratelos text-2xl">ENVÍO</p>
+                    <p>📦 Empaque Regular</p>
+                    <p>🗓️ 1-3 Días Hábiles</p>
+                </div>
+                <div class="flex flex-col">
+                    <p class="font-gratelos text-2xl">CALIFICACIÓN</p>
+                    <p class="text-4xl">{{ product.rating.rate }}<span class="text-lg">/ 5 ★</span><span class="text-base"> ({{ product.rating.count }} calificaciones)</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@else {
+    <div class="flex justify-center items-center">
+        <p class="text-4xl font-semibold mt-60">Producto no encontrado</p>
+    </div>
+}
+
+<app-footer></app-footer>
