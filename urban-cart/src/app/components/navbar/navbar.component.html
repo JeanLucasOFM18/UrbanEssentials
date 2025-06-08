@@ -1,11 +1,30 @@
-<div class="flex justify-between h-16 px-10 text-[#FFFFFF] bg-[#131313] items-center">
-    <div>
-        <ul class="flex gap-10 font-roboto text-xl">
-            <li class="hover:underline hover:decoration-2 hover:decoration-[#FFFFFF] cursor-pointer"><a routerLink="/">Inicio</a></li>
-            <li class="hover:underline hover:decoration-2 hover:decoration-[#FFFFFF] cursor-pointer"><a routerLink="/categories">Categorías</a></li>
-            <li class="hover:underline hover:decoration-2 hover:decoration-[#FFFFFF] cursor-pointer"><a routerLink="/products">Productos</a></li>
-        </ul>
+<nav class="bg-[#131313] text-white font-roboto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex-shrink-0 text-4xl font-gratelos">
+        <a routerLink="/">URBAN</a>
+      </div>
+      <div class="hidden lg:flex space-x-10 text-xl">
+        <a routerLink="/" class="hover:underline hover:decoration-2">Inicio</a>
+        <a routerLink="/categories" class="hover:underline hover:decoration-2">Categorías</a>
+        <a routerLink="/products" class="hover:underline hover:decoration-2">Productos</a>
+      </div>
+      <div class="text-2xl">
+        <a routerLink="/cart">🛒</a>
+      </div>
+      <div class="lg:hidden">
+        <button type="button" (click)="menuOpen = !menuOpen" class="text-white focus:outline-none text-3xl">
+          ☰
+        </button>
+      </div>
     </div>
-    <h2 class="font-gratelos text-4xl ml-[-240px]"><a routerLink="/">URBAN</a></h2>
-    <a routerLink="/cart" class="text-2xl">🛒</a>
-</div>
+  </div>
+  @if (menuOpen) {
+    <div class="lg:hidden px-4 pb-4 space-y-2 text-lg">
+      <a routerLink="/" (click)="menuOpen = false" class="block hover:underline">Inicio</a>
+      <a routerLink="/categories" (click)="menuOpen = false" class="block hover:underline">Categorías</a>
+      <a routerLink="/products" (click)="menuOpen = false" class="block hover:underline">Productos</a>
+      <a routerLink="/cart" (click)="menuOpen = false" class="block hover:underline">🛒 Carrito</a>
+    </div>
+  }
+</nav>

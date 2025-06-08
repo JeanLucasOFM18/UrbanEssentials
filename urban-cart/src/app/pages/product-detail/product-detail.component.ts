@@ -41,4 +41,11 @@ export class ProductDetailComponent implements OnInit{
   addToCart(producto: any) {
     this.cartService.addToCart(producto);
   }
+
+  goBack() {
+    history.back();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100); // Esperas un poco a que cargue
+  }
 }
